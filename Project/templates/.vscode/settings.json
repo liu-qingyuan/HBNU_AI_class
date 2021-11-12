@@ -1,0 +1,8 @@
+{
+    "terminal.integrated.rendererType": "dom",
+    "vscode_custom_css.imports": [
+        "file:///c:/Users/14640/Documents/custom.js",
+        "file:///c:/Users/14640/Documents/custom.css"
+        ],
+        "vscode_custom_css.policy": true
+}

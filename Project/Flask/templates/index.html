@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>金瓶书屋</title>
+</head>
+<body>
+
+<h1>你好，沅</h1>
+<p>开始 -> 你的世界</p>
+
+<form method="post">
+    {{ form.csrf_token() }}
+    {{ form.author.label }}{{ form.author }}<br>
+    {{ form.book.label }}{{ form.book }}<br>
+    {{ form.submit }}<br>
+    {# 显示消息闪现的内容 #}
+    {% for message in get_flashed_messages() %}
+        <ul>提示：{{ message }}</ul>
+    {% endfor %}
+    
+</form>
+
+    
+
+<hr>
+
+{% for author in authors %}
+    <li>{{author.name}}<a href="{{ url_for('delete_author', author_id = author.id) }}">删除</a></li>
+    <ul>
+    {% for book in author.books %}
+        <li>{{book .name}}<a href="{{ url_for('delete_book', book_id = book.id) }}">删除</a></li>
+    {% else %}
+        <li>无书籍</li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+    
+    
+</body>
+</html>

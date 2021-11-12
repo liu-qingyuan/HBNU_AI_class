@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Glassmorphism Website | Liu Q1ngyuan  AI签到 </title> 
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <header>
+    <nav class="navbar">
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Latest</a></li>
+        <li><a href="#">Offers</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="buttons">
+        <input type="button" value="Login">
+        <input type="button" value="Register">
+      </div>
+    </nav>
+    <div class="text-content">
+      <h2>河北师范大学AI 签到表<br>Every Moment Of Your Life</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>签到编号</th>
+                  <th>学号</th>
+                  <th>姓名</th>
+            <th>上课时间</th>
+            <th>签到时间</th>
+                  <th>是否准时签到</th>
+                  <th>身份</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sign in signs %}
+              {% if sign.is_sign_in == True %}
+              <tr class="success">
+                  <td>{{sign.sign_id}}</td>
+                  <td>{{sign.sno}}</td>
+                  <td>{{sign.students.name}}</td>
+                  <td>{{sign.class_start_time}}</td>
+                  <td>{{sign.sign_in_time}}</td>
+                  <td>{{sign.is_sign_in}}</td>
+                  <td>{{sign.students.roles.role_class}}</td>
+              </tr>
+              {% else %}
+              <tr class="danger">
+                  <td>{{sign.sign_id}}</td>
+                  <td>{{sign.sno}}</td>
+                  <td>{{sign.students.name}}</td>
+                  <td>{{sign.class_start_time}}</td>
+                  <td>{{sign.sign_in_time}}</td>
+                  <td>{{sign.is_sign_in}}</td>
+                  <td>{{sign.students.roles.role_class}}</td>
+              </tr>
+              {% endif %}
+          {% endfor %}
+          </tbody>
+      </table>
+      </div>
+    <div class="play-button">
+      <span class="play">Look Video</span>
+      <i class="fas fa-play" onclick="click()"></i>
+    </div>
+  </header>
+<script type="text/javascript" src="../static/js/vanilla-tilt.js"></script>
+<script type="text/javascript">
+	VanillaTilt.init(document.querySelector("header"), {
+		max: 10,
+		speed: 400,
+    glare: true,
+    "max-glart": 0.1,
+    reverse: true,
+    perspective:            10000,   // Transform perspective, the lower the more extreme the tilt gets.
+    gyroscopeMinAngleX:     -45,     // This is the bottom limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the left border of the element;
+    gyroscopeMaxAngleX:     45,      // This is the top limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the right border of the element;
+    gyroscopeMinAngleY:     -45,     // This is the bottom limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the top border of the element;
+    gyroscopeMaxAngleY:     45,      // This is the top limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the bottom border of the element;
+	});
+	
+	//It also supports NodeList
+	// VanillaTilt.init(document.querySelectorAll("header"));
+</script>
+</body>
+</html>

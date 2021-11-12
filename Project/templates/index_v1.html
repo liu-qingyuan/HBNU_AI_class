@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Liu Q1ngyuan  AI签到</title>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1>你好，沅</h1>
+<p>开始 -> 你的世界</p>
+
+<hr>
+
+<span class="label label-primary" style="text-align: center;display:block;font-size:24px">河北师范大学AI 签到表</span>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>签到编号</th>
+            <th>学号</th>
+            <th>姓名</th>
+			<th>上课时间</th>
+			<th>签到时间</th>
+            <th>是否准时签到</th>
+            <th>身份</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for sign in signs %}
+        {% if sign.is_sign_in == True %}
+        <tr class="success">
+            <td>{{sign.sign_id}}</td>
+            <td>{{sign.sno}}</td>
+            <td>{{sign.students.name}}</td>
+            <td>{{sign.class_start_time}}</td>
+            <td>{{sign.sign_in_time}}</td>
+            <td>{{sign.is_sign_in}}</td>
+            <td>{{sign.students.roles.role_class}}</td>
+        </tr>
+        {% else %}
+        <tr class="danger">
+            <td>{{sign.sign_id}}</td>
+            <td>{{sign.sno}}</td>
+            <td>{{sign.students.name}}</td>
+            <td>{{sign.class_start_time}}</td>
+            <td>{{sign.sign_in_time}}</td>
+            <td>{{sign.is_sign_in}}</td>
+            <td>{{sign.students.roles.role_class}}</td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
